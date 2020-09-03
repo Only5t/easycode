@@ -8,18 +8,27 @@ export default new Router({
     {
       path: '/',
       name: 'login',
-      component: resolve => require(['../components/login/Login.vue'], resolve),
-      meta: {
-        title: '登录'
-      }
+      component: resolve => require(['../components/login/login'], resolve)
     },
     {
       path: '/index',
       name: 'index',
-      mata: {
+      component: resolve => require(['../components/index/index'], resolve),
+      meta: {
+        title: 'index',
         requireAuth: true
       },
-      component: resolve => require(['../components/index/index'], resolve)
+      children: [
+        {
+          path: '/1-1',
+          name: '1-1',
+          component: resolve => require(['../components/user/user'], resolve),
+          meta: {
+            title: 'user',
+            requireAuth: true
+          }
+        }
+      ]
     }
   ]
 })

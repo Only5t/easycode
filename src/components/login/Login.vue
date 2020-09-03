@@ -49,6 +49,8 @@ export default {
         return
       }
       this.isBtnLoading = true
+      localStorage.setItem('token', '1234')
+      this.$router.replace('/index')
     }
   }
 }
